@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfólio - José B.</title>
+
+  <!-- Fonte Google -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: #eee;
+      min-height: 100vh;
+      line-height: 1.6;
+
+      /* Aqui colocamos o background do escudo */
+      background:
+        linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)),
+        url('https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Corinthians_escudo.png/600px-Corinthians_escudo.png') no-repeat center center fixed;
+      background-size: 400px 400px;
+    }
+
+    /* Header fixo */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.95);
+      border-bottom: 3px solid #cc0000;
+      padding: 15px 30px;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      color: #fff;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    nav a {
+      color: #eee;
+      text-decoration: none;
+      margin-left: 30px;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #cc0000;
+    }
+
+    /* Container principal */
+    main {
+      padding-top: 90px;
+      max-width: 1100px;
+      margin: 0 auto 50px;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    /* Seções */
+    section {
+      margin-bottom: 60px;
+      background: rgba(20, 20, 20, 0.85);
+      padding: 40px 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(204, 0, 0, 0.4);
+      animation: fadeInUp 1s ease forwards;
+      opacity: 0;
+    }
+
+    section:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+    section:nth-child(2) {
+      animation-delay: 0.3s;
+    }
+    section:nth-child(3) {
+      animation-delay: 0.5s;
+    }
+
+    /* Títulos */
+    section h2 {
+      color: #cc0000;
+      margin-bottom: 20px;
+      border-left: 6px solid #cc0000;
+      padding-left: 12px;
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    /* Sobre */
+    #sobre p {
+      font-size: 1.1rem;
+      max-width: 700px;
+    }
+
+    /* Projetos */
+    .projetos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 25px;
+    }
+
+    .projeto-card {
+      background: #111;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 10px #cc0000;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .projeto-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 0 20px #cc0000;
+    }
+
+    .projeto-card h3 {
+      margin-bottom: 15px;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.3rem;
+    }
+
+    .projeto-card p {
+      flex-grow: 1;
+      color: #ccc;
+      font-size: 1rem;
+      margin-bottom: 15px;
+    }
+
+    /* Contato */
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    form input,
+    form textarea {
+      padding: 15px;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+      resize: vertical;
+      font-family: inherit;
+      transition: box-shadow 0.3s ease;
+    }
+
+    form input:focus,
+    form textarea:focus {
+      outline: none;
+      box-shadow: 0 0 8px #cc0000;
+    }
+
+    form button {
+      background-color: #cc0000;
+      color: #fff;
+      border: none;
+      padding: 15px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    form button:hover {
+      background-color: #a30000;
+    }
+
+    #formMensagem {
+      margin-top: 15px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    /* Redes sociais */
+    .redes-sociais {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .redes-sociais a {
+      margin: 0 15px;
+      color: #eee;
+      font-size: 1.8rem;
+      display: inline-block;
+      transition: color 0.3s ease;
+    }
+
+    .redes-sociais a:hover {
+      color: #cc0000;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px 10px;
+      background: rgba(0, 0, 0, 0.85);
+      color: #777;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+      border-top: 2px solid #cc0000;
+      user-select: none;
+    }
+
+    /* Animações */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsividade */
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        padding: 15px;
+      }
+
+      nav a {
+        margin: 10px 15px 0;
+      }
+
+      .redes-sociais a {
+        font-size: 1.4rem;
+        margin: 0 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Portifolio José</h1>
+    <nav>
+      <a href="#sobre">Sobre</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="sobre" tabindex="0">
+      <h2>Sobre Mim</h2>
+      <p>Sou um desenvolvedor apaixonado por tecnologia e pelo Sport Club Corinthians Paulista. Com foco em sempre em melhorar meu desempenho e minhas abilidades com a programação.</p>
+    </section>
+
+    <section id="Meus projetos" tabindex="0">
+      <h2>Meus Projetos</h2>
+      <div class="projetos">
+        
+        <article class="projeto-card" tabindex="1" aria-label="Projeto: Site institucional">
+          <a href="https://github.com/s4ntos1/Repositorio_Base_Jose/blob/main/Modulo%202/Exercicios/multi.py" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none; display: block; height: 100%;">
+          <h3>Projeto de Multifunções</h3>
+          <p>Desenvolvimento completo com python,utilizando a biblioteca flet e OS.</p>
+        
+
+        <article class="projeto-card" tabindex="2" aria-label="projeto:manipulação de arquivo">
+        <a href="https://github.com/s4ntos1/Repositorio_Base_Jose/blob/main/Modulo%202/Manipula%C3%A7%C3%A3o%20de%20Arquivos%20e%20Automa%C3%A7%C3%A3o/Os.py" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none; display: block; height: 100%;">
+          <h3>Manipulação de arquivo</h3>
+          <p>Eu manipulei arquivos utilizando OS.</p>
+        </article>
+
+
+      <article class="projeto-card" tabindex="3" aria-label="Projeto: API RESTful">
+        <a href="https://github.com/s4ntos1/Repositorio_Base_Jose/blob/main/Modulo%202/APIs/apis1.py" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none; display: block; height: 100%;">
+          <h3>API RESTful</h3>
+          <p>API para gerenciamento de usuários, construida em python.</p>
+        </a>
+      </article>
+        
+        <article class="projeto-card" tabindex="5" "Foco em python">
+          <a href="https://github.com/s4ntos1/Repositorio_Base_Jose/blob/main/Modulo%202/Manipula%C3%A7%C3%A3o%20de%20Arquivos%20e%20Automa%C3%A7%C3%A3o/json.py" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none; display: block; height: 100%;">
+          <h3>Utilização de Json</h3>
+          <p>Aplicação de python utilizando Json.</p>
+        </article>
+      
+        
+
+
+
+
+
+      </div>
+    </section>
+
+    <section id="contato" tabindex="0">
+      <h2>Contato</h2>
+      <form id="formContato" novalidate>
+        <input type="text" name="nome" id="nome" placeholder="Seu nome" required />
+        <input type="email" name="email" id="email" placeholder="Seu email" required />
+        <textarea name="mensagem" id="mensagem" rows="5" placeholder="Sua mensagem" required></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+      <p id="formMensagem"></p>
+
+      <div class="redes-sociais" aria-label="Redes sociais">
+        <a href="https://github.com/s4ntos1" target="_blank" aria-label="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="24" viewBox="0 0 24 24" width="24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.613-4.042-1.613-.546-1.387-1.333-1.757-1.333-1.757-1.087-.744.084-.729.084-.729 1.205.084 1.84 1.237 1.84 1.237 1.07 1.835 2.807 1.304 3.492.997.108-.776.418-1.304.762-1.604-2.665-.305-5.466-1.332-5.466-5.93 0-1.31.467-2.382 1.235-3.222-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23a11.49 11.49 0 013.003-.403c1.02.005 2.047.138 3.003.404 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.912 1.23 3.222 0 4.61-2.805 5.625-5.475 5.92.432.372.825 1.102.825 2.222 0 1.604-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        
+        </a>
+        <a href="https://www.instagram.com/s4ntzzs_" target="_blank" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="24" viewBox="0 0 24 24" width="24"><path d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7zm10 3a1 1 0 110 2 1 1 0 010-2zm-5 2a5 5 0 110 10 5 5 0 010-10zm0 2a3 3 0 100 6 3 3 0 000-6z"/></svg>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025-Vai Corinthians!
